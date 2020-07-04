@@ -28,7 +28,7 @@ class GameController {
     }
 
     const gameOverPageCallbacks = () => {
-      this.gameModel.setStage('game-over')
+      this.gameModel.setStage('game')
     }
 
     this.gameView.initGameOverPage(gameOverPageCallbacks)
