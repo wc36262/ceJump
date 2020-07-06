@@ -1,19 +1,18 @@
-
 import GamePage from '../pages/game-page'
 import GameOverPage from '../pages/game-over-page'
 import Event from '../utils/event'
 
 class GameView {
-  constructor() {
+  constructor () {
     this.restartButtonClicked = new Event(this)
   }
-  
-  showGameOverPage() {
+
+  showGameOverPage () {
     // this.gamePage.hide()
     this.gameOverPage.show()
   }
- 
-  showGamePage() {
+
+  showGamePage () {
     this.gameOverPage.hide()
     this.gamePage.restart()
     this.gamePage.show()
@@ -25,9 +24,9 @@ class GameView {
       camera: this.gamePage.scene.camera.instance,
       scene: this.gamePage.scene.instance
     })
-   }
+  }
 
-  initGamePage(callbacks) {
+  initGamePage (callbacks) {
     this.gamePage = new GamePage(callbacks)
     this.gamePage.init()
   }

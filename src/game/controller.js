@@ -2,7 +2,7 @@ import gameView from './view'
 import gameModel from './model'
 
 class GameController {
-  constructor() {
+  constructor () {
     this.gameView = gameView
     this.gameModel = gameModel
     this.gameModel.stageChanged.attach((sender, args) => {
@@ -19,22 +19,21 @@ class GameController {
     })
   }
 
-  // 游戏中的页面， 游戏结束的页面
-  initPages() {
+  initPages () {
     const gamePageCallbacks = {
       showGameOverPage: () => {
         this.gameModel.setStage('game-over')
       }
     }
-
-    const gameOverPageCallbacks = () => {
-      this.gameModel.setStage('game')
+    const gameOverPagesCallbacks = {
+      gameRestart: () => {
+        this.gameModel.setStage('game')
+      }
     }
-
-    this.gameView.initGameOverPage(gameOverPageCallbacks)
     this.gameView.initGamePage(gamePageCallbacks)
+    this.gameView.initGameOverPage(gameOverPagesCallbacks)
+    this.gameModel.setStage('game')
   }
-
 }
 
 export default new GameController()
