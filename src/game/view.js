@@ -5,11 +5,11 @@ import Event from '../utils/event'
 
 class GameView {
   constructor() {
-
+    this.restartButtonClicked = new Event(this)
   }
   
   showGameOverPage() {
-    this.gamePage.hide()
+    // this.gamePage.hide()
     this.gameOverPage.show()
   }
  
@@ -19,25 +19,13 @@ class GameView {
     this.gamePage.show()
   }
 
-  restartGame() {
-    this.gamePage.restart()
-  }
-
   initGameOverPage (callbacks) {
     this.gameOverPage = new GameOverPage(callbacks)
     this.gameOverPage.init({
-      scene: this.gamePage.scene
+      camera: this.gamePage.scene.camera.instance,
+      scene: this.gamePage.scene.instance
     })
    }
-
-  //  initGameOverPage (callbacks) {
-  //   this.gameOverPage = new GameOverPage(callbacks)
-  //   this.gameOverPage.init({
-  //     camera: this.gamePage.scene.camera.instance,
-  //     scene: this.gamePage.scene.instance
-  //   })
-  // }
-
 
   initGamePage(callbacks) {
     this.gamePage = new GamePage(callbacks)
