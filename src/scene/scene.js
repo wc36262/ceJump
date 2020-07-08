@@ -4,16 +4,17 @@ import light from './light'
 import background from '../objects/background'
 
 class Scene {
-  constructor() {
-
+  constructor () {
   }
-  init() {
+
+  init () {
     this.instance = new THREE.Scene()
-    const renderer = this.renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      canvas: canvas,
-      preserveDrawingBuffer: true,
-    })
+    const renderer = this.renderer = new THREE.WebGLRenderer(
+      { antialias: true,
+        canvas: canvas,
+        preserveDrawingBuffer: true,
+      }
+    )
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFShadowMap
     // renderer.setClearColor(sceneConf.backgroundColor)
@@ -30,28 +31,29 @@ class Scene {
     this.background.instance.position.z = -84
     this.camera.instance.add(this.background.instance)
   }
-  reset() {
+
+  reset () {
     this.camera.reset()
     this.light.reset()
   }
 
-  render() {
+  render () {
     this.renderer.render(this.instance, this.camera.instance)
   }
 
-  updateCameraPosition(targetPosition) {
+  updateCameraPosition (targetPosition) {
     this.camera.updatePosition(targetPosition)
     this.light.updatePosition(targetPosition)
   }
 
-  addScore(scoreInstance) {
+  addScore (scoreInstance) {
     this.currentScore = scoreInstance
     this.camera.instance.add(scoreInstance)
     scoreInstance.position.x = -20
     scoreInstance.position.y = 40
   }
 
-  updateScore(scoreInstance) {
+  updateScore (scoreInstance) {
     this.camera.instance.remove(this.currentScore)
     this.currentScore = scoreInstance
     this.camera.instance.add(scoreInstance)
