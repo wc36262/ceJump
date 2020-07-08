@@ -256,8 +256,6 @@ export default class GamePage {
       }
     }
 
-
-    
     var currentPolygon = currentBlock.getVertices()
     var result2
     if (utils.pointInPolygon(destination, currentPolygon)) {
